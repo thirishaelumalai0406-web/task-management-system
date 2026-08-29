@@ -148,7 +148,7 @@ const updateTaskStatus = asyncHandler(async (req, res) => {
   }
 
   // Ownership check
-  if (task.assignedTo.toString() !== req.user.id) {
+  if (task.assignedTo.toString() !== String(req.user.id)) {
     return res.status(403).json({ success: false, message: 'You can only update your own tasks' });
   }
 
